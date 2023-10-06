@@ -1,0 +1,7 @@
+.create-container {
+    flex-direction: row;
+    justify-content: center;
+    background-size: cover;
+    align-items: center;
+    align-content: center;
+  }
