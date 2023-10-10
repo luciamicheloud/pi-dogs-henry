@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDogById } from "../../redux/actions/actions";
+import "./Detail.css";
 
 function Detail() {
   const { id } = useParams();
@@ -19,14 +20,14 @@ function Detail() {
 
   return (
     <div>
-      <h1>{dog[0].name}</h1>
-      <div>
-        <img src={dog[0].imagen} alt={dog[0].name} />
+      <h1 className="card-container-font-title">{dog[0].name}</h1>
+      <div className="card-container">
+        <img src={dog[0].image} alt={dog[0].name} />
         <p>ID: {dog[0].id}</p>
-        <p>Altura: {dog[0].altura} cm.</p>
-        <p>Peso: {dog[0].peso} kg.</p>
-        <p>Temperamentos: {dog[0].temperamentos}</p>
-        <p>Años de vida: {dog[0].añosDeVida}</p>
+        <p>height: {dog[0].height} cm.</p>
+        <p>weight: {dog[0].weight} kg.</p>
+        <p>temperaments: {dog[0].temperaments}</p>
+        <p>Años de vida: {dog[0].life_span}</p>
       </div>
       <Link to="/home">Volver al inicio</Link>
     </div>

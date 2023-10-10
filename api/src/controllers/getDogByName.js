@@ -23,11 +23,11 @@ const getDogByname = async (req, res) => {
     const apiRazas = apiData.map((e) => ({             
       id: e.id,
       name: e.name,
-      imagen: e.image.url,
-      altura: e.height.metric,
-      peso: e.weight.metric,
-      temperamentos: e.temperament,
-      añosDeVida: e.life_span
+      image: e.image.url,
+      height: e.height.metric,
+      weight: e.weight.metric,
+      temperaments: e.temperament,
+      life_span: e.life_span
     }));
 
     // Consultar la base de datos local
@@ -37,7 +37,7 @@ const getDogByname = async (req, res) => {
           [Op.iLike]: `%${name}%`
         }
       },
-      include: [{ model: Temperament, as: 'temperamentos' }]
+      include: [{ model: Temperament, as: 'temperaments' }]
     });
 
     // Combinar resultados de la API y la base de datos local

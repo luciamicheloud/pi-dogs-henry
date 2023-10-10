@@ -77,7 +77,7 @@ import {
       try {
         const { data } = await axios(endpoint);
   
-        if (!Object.keys(data).length) throw Error("No existen temperamentos");
+        if (!Object.keys(data).length) throw Error("No existen temperaments");
         return dispatch({
           type: GET_TEMPERAMENTS,
           payload: data,
@@ -152,7 +152,7 @@ import {
       try {
         const response = await axios.post(endpoint, dog);
         if (!dog.temperaments || dog.temperaments.length === 0) {
-          throw new Error("No existen temperamentos");
+          throw new Error("No existen temperaments");
         }
   
         return dispatch({

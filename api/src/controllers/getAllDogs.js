@@ -16,11 +16,11 @@ const getAllDogs = async (req, res) => {
     const filteredBreeds = apiBreeds.map((breed) => ({
       id: breed.id,
       name: breed.name,
-      imagen: breed.image.url,
-      altura: breed.height.metric,
-      peso: breed.weight.metric,
-      temperamentos: breed.temperament ? breed.temperament.split(',').map((temperament) => temperament.trim()) : [],
-      añosDeVida: breed.life_span
+      image: breed.image.url,
+      height: breed.height.metric,
+      weight: breed.weight.metric,
+      temperaments: breed.temperament ? breed.temperament.split(',').map((temperament) => temperament.trim()) : [],
+      life_span: breed.life_span
     }));
 
 
@@ -28,7 +28,7 @@ const getAllDogs = async (req, res) => {
       include: [
         {
           model: Temperament,
-          as: "temperamentos",
+          as: "temperaments",
           attributes: ['name'],
           through: { attributes: [] },
         },
@@ -36,14 +36,14 @@ const getAllDogs = async (req, res) => {
       raw: true,
     });
     
-    // Modificar el resultado para obtener los temperamentos como una matriz de cadenas separadas por coma
+    // Modificar el resultado para obtener los temperaments como una matriz de cadenas separadas por coma
     dbBreeds.forEach((dog) => {
-      if (dog['temperamentos.name']) {
-        dog.temperamentos = dog['temperamentos.name'].split(',');
+      if (dog['temperaments.name']) {
+        dog.temperaments = dog['temperaments.name'].split(',');
       } else {
-        dog.temperamentos = []; // Si el campo es nulo, asignar una matriz vacía
+        dog.temperaments = []; // Si el campo es nulo, asignar una matriz vacía
       }
-      delete dog['temperamentos.name'];
+      delete dog['temperaments.name'];
     });
     
     const allBreeds = [...filteredBreeds,...dbBreeds];

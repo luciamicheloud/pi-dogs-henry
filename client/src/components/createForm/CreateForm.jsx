@@ -9,7 +9,7 @@ import CheckBox from "../../components/checkBox/CheckBox";
 function CreateDogForm({ props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const temperamentos = props;
+  const temperaments = props;
   const [checkBox, setCheckBox] = useState([]);
 
   const [dogData, setDogData] = useState({
@@ -19,7 +19,7 @@ function CreateDogForm({ props }) {
     weightMax: "",
     weightMin: "",
     life_span: "",
-    temperaments: "",
+    temperaments: [],
     image: "",
   });
 
@@ -30,7 +30,7 @@ function CreateDogForm({ props }) {
     weightMax: "",
     weightMin: "",
     life_span: "",
-    temperaments: "",
+    temperaments: [],
     image: "",
   });
 
@@ -58,21 +58,21 @@ function CreateDogForm({ props }) {
       weightMax: "",
       weightMin: "",
       life_span: "",
-      temperaments: "",
+      temperaments: [],
       image: "",
     });
 
     navigate("/home");
   };
 
-  const handleInputChange = (event, temperamentos) => {
+  const handleInputChange = (event, temperaments) => {
     const { name, value } = event.target;
     setDogData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
 
-    setErrors(validate({ ...dogData, [name]: value }, temperamentos));
+    setErrors(validate({ ...dogData, [name]: value }, temperaments));
   };
 
   const handleCheck = (event) => {
@@ -83,7 +83,7 @@ function CreateDogForm({ props }) {
     <div className="form-dog-container">
       <form onSubmit={handleSubmit}>
         <label>
-          name:
+          Name:
           <input
             type="text"
             name="name"
@@ -149,21 +149,19 @@ function CreateDogForm({ props }) {
         </label>
         <br />
         <label>
-          Temperaments:
-          <input
+        <br />
+        <fieldset>
+          <legend>Here you have somes temperaments</legend>
+          <CheckBox props={temperaments} handleCheck={handleCheck} 
             type="text"
             name="temperaments"
             value={dogData.temperaments}
             onChange={handleInputChange}
-          />
-          <span>{errors.temperaments}</span>
-        </label>
-        <br />
-        <fieldset>
-          <legend>Here you have somes temperaments</legend>
-          <CheckBox props={temperamentos} handleCheck={handleCheck} />
+            />
         </fieldset>
         <br />
+        <span>{errors.temperaments}</span>
+            </label>
         <label>
           Image URL:
           <input

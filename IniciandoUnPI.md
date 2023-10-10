@@ -104,7 +104,7 @@
 -  Es recomendable utilizar la misma fuente y el mismo tamaño de letra, botones con el mismo estilo y color para los que realizan la misma acción (por ejemplo, borrar).
 -  No se permitirá utilizar librerías externas para aplicar estilos a la aplicación.
 -  Los elementos deben estar centrados y estilizados.
--  La **Landing Page** debe tener alguna imagen de fondo representativa al proyecto y un botón que redirija a la Home Page.
+-  La **Landing Page** debe tener alguna image de fondo representativa al proyecto y un botón que redirija a la Home Page.
 
 > [ **CONSEJO** ]: observa varios sitios web para ver la uniformidad en sus estilos.
 

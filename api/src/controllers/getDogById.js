@@ -23,18 +23,18 @@ const getDogById = async (req, res) => {
       const filtereddogApi = dogApi.map((perro) => ({
         id: perro.id,
         name: perro.name,
-        altura: perro.height.metric,
-        imagen: `https://cdn2.thedogapi.com/images/`+perro.reference_image_id+`.jpg`,
-        peso: perro.weight.metric,
-        temperamentos: perro.temperament,
-        añosDeVida: perro.life_span
+        height: perro.height.metric,
+        image: `https://cdn2.thedogapi.com/images/`+perro.reference_image_id+`.jpg`,
+        weight: perro.weight.metric,
+        temperaments: perro.temperament,
+        life_span: perro.life_span
       }));
 
       
 
       res.json(filtereddogApi)
     } else {
-      // traerme los temperamentos
+      // traerme los temperaments
       res.json(dog)
     }
 

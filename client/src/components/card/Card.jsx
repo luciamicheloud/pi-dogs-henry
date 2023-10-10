@@ -10,14 +10,14 @@ function Card({ dog }) {
 
       <div>
         <Link to={`/home/${dog.id}`}>
-          <img src={dog.imagen?.url || dog.imagen} alt="image not found" />
+          <img src={dog.image?.url || dog.image} alt="image not found" />
         </Link>
       </div>
       <h3 className="card-container-c-body-font">
-        TEMPERAMENT: {dog.temperamentos}
+        TEMPERAMENT: {dog.temperaments}
       </h3>
       <h3 className="card-container-c-body-font">
-        WEIGHT: {dog.peso} kg.
+        WEIGHT: {dog.weight} kg.
       </h3>
     </div>
   );

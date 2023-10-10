@@ -4,11 +4,11 @@ function CheckBox({ props, handleCheck }) {
   return (
     <div className="checkBox-container">
       {props.map((temp) => (
-        <div>
+        <div key={temp.id}>
           <label htmlFor={temp.name}>{temp.name}</label>
           <input
             type="checkbox"
-            id={temp.name}
+            id={temp.id}
             name={temp.name}
             onChange={handleCheck}
           />

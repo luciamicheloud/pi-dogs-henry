@@ -2,20 +2,20 @@ const { Dog, Temperament } = require("../db");
 
 const postDog = async (req, res) => {
   try {
-    const { name, altura, peso, temperamentos } = req.body;
+    const { name, height, weight, temperaments } = req.body;
 
-    if (!name || !altura || !peso || !temperamentos) {
+    if (!name || !height || !weight || !temperaments) {
       return res.status(400).json('Faltan datos');
     }
 
     // Buscar o crear el perro por sus características principales
     const [newDog, created] = await Dog.findOrCreate({
-      where: { name, altura, peso },
+      where: { name, height, weight },
     });
 
-    const temperamentArray = Array.isArray(temperamentos)
-      ? temperamentos
-      : [temperamentos];
+    const temperamentArray = Array.isArray(temperaments)
+      ? temperaments
+      : [temperaments];
 
     const associatedTemperaments = [];
 

@@ -32,7 +32,7 @@ const getTemperaments = async (req, res) => {
     res.json(dbTemperaments);
   } catch (error) {
     console.log(error);
-    throw new Error("Error al obtener los temperamentos");
+    throw new Error("Error al obtener los temperaments");
   }
 };
 

@@ -110,15 +110,15 @@ La idea de este proyecto es construir una aplicación web a partir de la API [**
 
 ### **🖱 BASE DE DATOS**
 
-Deberás crear dos modelos para tu base de datos. Una será para las razas de perros y la otra será para los temperamentos (pueden llevar el name que tu quieras). La relación entre ambos modelos debe ser de muchos a muchos. A continuación te dejamos **todas** las propiedades que debe tener cada modelo.
+Deberás crear dos modelos para tu base de datos. Una será para las razas de perros y la otra será para los temperaments (pueden llevar el name que tu quieras). La relación entre ambos modelos debe ser de muchos a muchos. A continuación te dejamos **todas** las propiedades que debe tener cada modelo.
 
 **📍 MODELO 1 | Dogs**
 
 -  ID.\*
--  Imagen.\*
+-  image.\*
 -  name.\*
--  Altura.\*
--  Peso.\*
+-  height.\*
+-  weight.\*
 -  Años de vida.\*
 
 <br />
@@ -148,7 +148,7 @@ Tu servidor deberá contar con las siguientes rutas:
 
 -  Esta ruta obtiene el detalle de una raza específica. Es decir que devuelve un objeto con la información pedida en el detalle de un perro.
 -  La raza es recibida por parámetro (ID).
--  Tiene que incluir los datos de los temperamentos asociadas a esta raza.
+-  Tiene que incluir los datos de los temperaments asociadas a esta raza.
 -  Debe funcionar tanto para los perros de la API como para los de la base de datos.
 
 #### **📍 GET | /dogs/name?="..."**
@@ -160,13 +160,13 @@ Tu servidor deberá contar con las siguientes rutas:
 
 #### **📍 POST | /dogs**
 
--  Esta ruta recibirá todos los datos necesarios para crear un nuevo perro y relacionarlo con los temperamentos asociados.
+-  Esta ruta recibirá todos los datos necesarios para crear un nuevo perro y relacionarlo con los temperaments asociados.
 -  Toda la información debe ser recibida por body.
--  Debe crear la raza de perro en la base de datos, y esta debe estar relacionada con los temperamentos indicados (al menos uno).
+-  Debe crear la raza de perro en la base de datos, y esta debe estar relacionada con los temperaments indicados (al menos uno).
 
 #### **📍 GET | /temperaments**
 
--  Obtiene todos los temperamentos existentes.
+-  Obtiene todos los temperaments existentes.
 -  Estos deben ser obtenidos de la API (se evaluará que no haya hardcodeo). Luego de obtenerlos de la API, deben ser guardados en la base de datos para su posterior consumo desde allí.
 
 <br />
@@ -181,7 +181,7 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 
 **📍 LANDING PAGE |** deberás crear una página de inicio o bienvenida con:
 
--  Alguna imagen de fondo representativa al proyecto.
+-  Alguna image de fondo representativa al proyecto.
 -  Botón para ingresar a la **`home page`**.
 
 <br />
@@ -190,13 +190,13 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 
 -  SearchBar: un input de búsqueda para encontrar razas de perros por name.
 -  Sector en el que se vea un listado de cards con los perros. Al iniciar deberá cargar los primeros resultados obtenidos desde la ruta **`GET /dogs`** y deberá mostrar su:
-   -  Imagen.
+   -  image.
    -  name.
-   -  Temperamentos.
-   -  Peso.
+   -  temperaments.
+   -  weight.
 -  Cuando se le hace click a una Card deberá redirigir al detalle de esa raza específica.
--  Botones/Opciones para **filtrar** por temperamentos, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
--  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente las razas de perros por orden alfabético y por peso.
+-  Botones/Opciones para **filtrar** por temperaments, y por si su origen es de la API o de la base de datos (creados por nosotros desde el formulario).
+-  Botones/Opciones para **ordenar** tanto ascendentemente como descendentemente las razas de perros por orden alfabético y por weight.
 -  Paginado: el listado de razas de perros se hará por partes. Tu SPA debe contar con un paginado que muestre un total de 8 perros por página.
 
 **⚠️ IMPORTANTE**: se deben mostrar tanto las razas de perros traidas desde la API como así también las de la base de datos, pero **NO** está permitido almacenar en la base de datos las razas de perros de la API. **Solamente se pueden guardar aquellas creadas desde el form**.
@@ -206,11 +206,11 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 **📍 DETAIL PAGE |** en esta vista se deberá mostrar toda la información específica de un perro:
 
 -  ID.
--  Imagen.
+-  image.
 -  name.
--  Altura.
--  Peso.
--  Temperamentos.
+-  height.
+-  weight.
+-  temperaments.
 -  Años de vida.
 
 <br />
@@ -220,13 +220,13 @@ Se debe desarrollar una aplicación utilizando **React** y **Redux** que conteng
 Este formulario debe ser **controlado completamente con JavaScritp**. No se pueden utilizar validaciones HTML, ni utilizar librerías especiales para esto. Debe contar con los siguientes campos:
 
 -  name.
--  Altura **(diferenciar entre altura mínima y máxima de la raza)**.
--  Peso **(diferenciar entre peso mínimo y máximo de la raza)**.
+-  height **(diferenciar entre height mínima y máxima de la raza)**.
+-  weight **(diferenciar entre weight mínimo y máximo de la raza)**.
 -  Años de vida.
--  Posibilidad de seleccionar/agregar varios temperamentos en simultáneo.
+-  Posibilidad de seleccionar/agregar varios temperaments en simultáneo.
 -  Botón para crear la nueva raza.
 
-> [**IMPORANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el name de la raza no pueda contener números, o que el peso/altura mínimo no pueda ser mayor al máximo.
+> [**IMPORANTE**]: es requisito que el formulario de creación esté validado sólo con JavaScript. Puedes agregar las validaciones que consideres. Por ejemplo: que el name de la raza no pueda contener números, o que el weight/height mínimo no pueda ser mayor al máximo.
 
 <br />
 
