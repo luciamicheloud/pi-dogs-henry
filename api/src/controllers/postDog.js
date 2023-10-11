@@ -1,41 +1,33 @@
 const { Dog, Temperament } = require("../db");
+const { Op } = require("sequelize");
 
 const postDog = async (req, res) => {
+  const { temperaments, ...razaData } = req.body;
+
   try {
-    const { name, height, weight, temperaments } = req.body;
+    // Crear la raza de perro en la base de datos
+    const raza = await Dog.create(razaData);
 
-    if (!name || !height || !weight || !temperaments) {
-      return res.status(400).json('Faltan datos');
-    }
-
-    // Buscar o crear el perro por sus características principales
-    const [newDog, created] = await Dog.findOrCreate({
-      where: { name, height, weight },
-    });
-
-    const temperamentArray = Array.isArray(temperaments)
-      ? temperaments
-      : [temperaments];
-
-    const associatedTemperaments = [];
-
-    await Promise.all(
-      temperamentArray.map(async (temperament) => {
-        const trimmedTemperament = temperament.trim();
-        const foundTemperament = await Temperament.findOne({
-          where: { name: trimmedTemperament },
+    if (temperaments && temperaments.length > 0) {
+      // Buscar temperaments en la base de datos y relacionarlos con la raza
+      for (const temperament of temperaments) {
+        const tempId = await Temperament.findOne({
+          where: {
+            name: {
+              [Op.iLike]: `%${temperament}%`,
+            },
+          },
         });
 
-        if (foundTemperament) {
-          await newDog.addTemperamentos(foundTemperament);
-          associatedTemperaments.push(foundTemperament.name);
+        if (tempId) {
+          await raza.addTemperament(tempId);
         }
-      })
-    );
+      }
+    }
 
-    return res.json("SUCCESSFULLY CREATED");
+    res.status(201).send(raza);
   } catch (error) {
-    return res.status(500).json(error.message);
+    res.status(500).json(error);
   }
 };
 

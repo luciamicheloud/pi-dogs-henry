@@ -39,9 +39,36 @@ const getDogByname = async (req, res) => {
       },
       include: [{ model: Temperament, as: 'temperaments' }]
     });
+    
+    const obj = dbRazas.map((e) => ({             
+      id: e.id,
+      name: e.name,
+      image: e.image,
+      height: e.height,
+      weight: e.weight,
+      temperaments: e.temperaments.map((temp)=> temp.name),
+      life_span: e.life_span
+    }));
+
+
+    // "id": "35419c6c-6269-49a5-b487-c37a5b5d42a5",
+    // "name": "juancho",
+    // "image": "https://i.pinimg.com/564x/42/ca/8f/42ca8f2de4c4d913329ccdd2f32746c2.jpg",
+    // "height": "645 - 34343",
+    // "weight": "3 - 33",
+    // "life_span": "3",
+    // "temperaments": [
+    //   {
+    //     "id": 1,
+    //     "name": "Stubborn",
+    //     "temperament_dog": {
+    //       "dogId": "35419c6c-6269-49a5-b487-c37a5b5d42a5",
+    //       "temperamentId": 1
+    //     }
+    //   },
 
     // Combinar resultados de la API y la base de datos local
-    const allRazas = [...apiRazas, ...dbRazas];
+    const allRazas = [...apiRazas, ...obj];
 
     if (allRazas.length === 0) {
       return res.status(404).json({ message: "No se encontraron razas de perros." });

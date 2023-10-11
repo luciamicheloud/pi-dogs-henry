@@ -14,7 +14,7 @@ function Card({ dog }) {
         </Link>
       </div>
       <h3 className="card-container-c-body-font">
-        TEMPERAMENT: {dog.temperaments}
+        TEMPERAMENT: {dog.temperaments.join(', ')}
       </h3>
       <h3 className="card-container-c-body-font">
         WEIGHT: {dog.weight} kg.

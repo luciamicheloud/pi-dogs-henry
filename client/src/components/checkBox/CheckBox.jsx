@@ -8,7 +8,7 @@ function CheckBox({ props, handleCheck }) {
           <label htmlFor={temp.name}>{temp.name}</label>
           <input
             type="checkbox"
-            id={temp.id}
+
             name={temp.name}
             onChange={handleCheck}
           />

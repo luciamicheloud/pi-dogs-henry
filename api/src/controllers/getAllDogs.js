@@ -23,30 +23,22 @@ const getAllDogs = async (req, res) => {
       life_span: breed.life_span
     }));
 
+    const dbRazas = await Dog.findAll({
+      include: [{ model: Temperament, as: 'temperaments' }]
+    });
 
-    const dbBreeds = await Dog.findAll({
-      include: [
-        {
-          model: Temperament,
-          as: "temperaments",
-          attributes: ['name'],
-          through: { attributes: [] },
-        },
-      ],
-      raw: true,
-    });
+    const obj = dbRazas.map((e) => ({             
+      id: e.id,
+      name: e.name,
+      image: e.image,
+      height: e.height,
+      weight: e.weight,
+      temperaments: e.temperaments.map((temp)=> temp.name),
+      life_span: e.life_span
+    }));
+
     
-    // Modificar el resultado para obtener los temperaments como una matriz de cadenas separadas por coma
-    dbBreeds.forEach((dog) => {
-      if (dog['temperaments.name']) {
-        dog.temperaments = dog['temperaments.name'].split(',');
-      } else {
-        dog.temperaments = []; // Si el campo es nulo, asignar una matriz vacía
-      }
-      delete dog['temperaments.name'];
-    });
-    
-    const allBreeds = [...filteredBreeds,...dbBreeds];
+    const allBreeds = [...filteredBreeds,...obj];
 
     res.json(allBreeds);
 
