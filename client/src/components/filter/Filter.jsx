@@ -12,8 +12,8 @@ function Filter({
     <div className="filter-container">
       <select onChange={handleOrderWeight}>
         <option>Order Weight</option>
-        <option value="A">Ascendent</option>
-        <option value="D">Descendent</option>
+        <option name="pesoMayor">Ascendent</option>
+        <option name="pesoMenor">Descendent</option>
       </select>
       <select onChange={handleOrdername}>
         <option>Order name</option>
