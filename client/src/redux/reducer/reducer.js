@@ -4,16 +4,17 @@ import {
     GET_DOG_BY_name,
     GET_TEMPERAMENTS,
     FILTERED_BY_TEMPERAMENTS,
-    ORDER_BY_name,
+    ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
     POST_DOG,
     FILTERED_BY_HOSTED,
   } from "../actions/types";
   
   const initialState = {
+    filters: false,
     allDogs: [],
     copyAllDogs: [],
-    dog: {},
+    dog: [],
     temperaments: [],
     filtered: [],
   };
@@ -32,28 +33,36 @@ import {
       case GET_TEMPERAMENTS:
         return { ...state, temperaments: payload };
   
-      case FILTERED_BY_TEMPERAMENTS:
-        let filtered = "";
-  
-        state.filtered.length
-          ? (filtered = state.filtered.filter(
-              (dog) => dog.temperament && dog.temperament.includes(payload)
-            ))
-          : (filtered = state.copyAllDogs);
-  
-        if (payload === "Temperaments") {
-          filtered = state.copyAllDogs;
-          return { ...state, allDogs: [...filtered], filtered: [...filtered] };
-        } else {
-          filtered = filtered.filter(
-            (dog) => dog.temperament && dog.temperament.includes(payload)
-          );
-        }
-  
-        return {
-          ...state,
-          allDogs: [...filtered],
-        };
+        case FILTERED_BY_TEMPERAMENTS:
+          let temp = [];
+          if (state.filters) {
+            temp = [...state.filtered].filter(
+              (dog) =>
+                dog.temperaments &&
+                payload &&
+                dog.temperaments.includes(payload)
+            );
+            return {
+              ...state,
+              allDogs: [...temp],
+              filtered: temp,
+              filters: true
+            };
+          } else {
+            temp = [...state.copyAllDogs].filter(
+              (dog) =>
+                dog.temperaments &&
+                payload &&
+                dog.temperaments.includes(payload)
+            );
+            return {
+              ...state,
+              allDogs: [...temp],
+              filtered: temp,
+              filters: true
+            };
+          }
+        
   
       case FILTERED_BY_HOSTED:
         let filterHosted = "";
@@ -78,7 +87,7 @@ import {
           allDogs: [...filteredHosted],
         };
   
-      case ORDER_BY_name:
+      case ORDER_BY_NAME:
         let ordername = "";
   
         state.filtered.length
@@ -100,26 +109,68 @@ import {
         };
   
       case ORDER_BY_WEIGHT:
-        let orderWeight = "";
-  
-        state.filtered.length
-          ? (orderWeight = state.filtered)
-          : (orderWeight = state.copyAllDogs);
-  
-        let orderedWeight =
-          payload === "D"
-            ? orderWeight.sort(
-                (a, b) =>
-                  b.weight.metric?.split(" ")[0] - a.weight.metric?.split(" ")[0]
-              )
-            : orderWeight.sort(
-                (b, a) =>
-                  b.weight.metric?.split(" ")[0] - a.weight.metric?.split(" ")[0]
-              );
-        return {
-          ...state,
-          allDogs: [...orderedWeight],
-        };
+        switch (payload) {
+          case "pesoMayor":
+              let may = [];
+              if (state.filters) {
+                  may = [...state.filtered].sort((prev, next) => {
+                      if (pesoPromedio(prev.peso) > pesoPromedio(next.peso)) return -1;
+                      if (pesoPromedio(prev.peso) < pesoPromedio(next.peso)) return 1;
+                      return 0;
+                  });
+                  return {
+                      ...state,
+                      allDogs: [...may].splice(0, 8),
+                      filtered: may,
+                      currentPage: 0,
+                      filters: true
+                  };
+              } else {
+                  may = [...state.copyAllDogs].sort((prev, next) => {
+                      if (pesoPromedio(prev.peso) > pesoPromedio(next.peso)) return -1;
+                      if (pesoPromedio(prev.peso) < pesoPromedio(next.peso)) return 1;
+                      return 0;
+                  });
+                  return {
+                      ...state,
+                      allDogs: [...may].splice(0, 8),
+                      filtered: may,
+                      currentPage: 0,
+                      filters: true
+                  };
+              }
+          case "pesoMenor":
+              let men = [];
+              if (state.filters) {
+                  men = [...state.filtered].sort((prev, next) => {
+                      if (pesoPromedio(prev.peso) > pesoPromedio(next.peso)) return 1;
+                      if (pesoPromedio(prev.peso) < pesoPromedio(next.peso)) return -1;
+                      return 0;
+                  });
+                  return {
+                      ...state,
+                      allDogs: [...men].splice(0, 8),
+                      filtered: men,
+                      currentPage: 0,
+                      filters: true
+                  };
+              } else {
+                  men = [...state.copyAllDogs].sort((prev, next) => {
+                      if (pesoPromedio(prev.peso) > pesoPromedio(next.peso)) return 1;
+                      if (pesoPromedio(prev.peso) < pesoPromedio(next.peso)) return -1;
+                      return 0;
+                  });
+                  return {
+                      ...state,
+                      allDogs: [...men].splice(0, 8),
+                      filtered: men,
+                      currentPage: 0,
+                      filters: true
+                  };
+              }
+          default:
+              return state;
+      };
   
       case POST_DOG:
         return {

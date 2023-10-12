@@ -1,5 +1,3 @@
-
-
 function Pagination({
   handlePreviousPage,
   handleNextPage,

@@ -1,16 +1,17 @@
+import React from 'react';
 import Option from "../../components/temperamentsOptions/TemperamentsOptions";
-
+import "./filter.css";
 function Filter({
   handleOrderWeight,
   handleOrdername,
   handleFilterByHosted,
+  handleFilterByTemperament,
   temperaments,
-  handleFilter,
 }) {
   return (
     <div className="filter-container">
       <select onChange={handleOrderWeight}>
-        <option value="">Order Weight</option>
+        <option>Order Weight</option>
         <option value="A">Ascendent</option>
         <option value="D">Descendent</option>
       </select>
@@ -24,14 +25,7 @@ function Filter({
         <option value="API">API</option>
         <option value="DB">DB</option>
       </select>
-      <select onChange={handleFilter}>
-        <option value="">Temperaments</option>
-        {temperaments.map((temp) => (
-          <option value={temp.dogs} key={temp.name}>
-            {temp.name}
-          </option>
-        ))}
-      </select>
+      <Option props={temperaments} handleFilter={handleFilterByTemperament} />
     </div>
   );
 }

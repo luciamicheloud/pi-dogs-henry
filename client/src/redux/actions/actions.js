@@ -4,7 +4,7 @@ import {
     GET_DOG_BY_name,
     GET_TEMPERAMENTS,
     FILTERED_BY_TEMPERAMENTS,
-    ORDER_BY_name,
+    ORDER_BY_NAME,
     ORDER_BY_WEIGHT,
     POST_DOG,
     FILTERED_BY_HOSTED,
@@ -117,27 +117,36 @@ import {
   export const ordernameCards = (order) => {
     return async (dispatch) => {
       try {
-        return dispatch({ type: ORDER_BY_name, payload: order });
+        return dispatch({ type: ORDER_BY_NAME, payload: order });
       } catch (error) {
         console.log("error:", error.message);
       }
     };
   };
   
-  export const orderWeightCards = (order) => {
-    return async (dispatch, getState) => {
-      const allDogs = getState().allDogs.slice();
+  // export const orderWeightCards = (order) => {
+  //   return async (dispatch, getState) => {
+  //     const allDogs = getState().allDogs.slice();
       
-      const sortedDogs = allDogs.sort((a, b) => {
-        const weightA = parseInt(a.weight.metric.split(" ")[0]);
-        const weightB = parseInt(b.weight.metric.split(" ")[0]);
+  //     const sortedDogs = allDogs.sort((a, b) => {
+  //       const weightA = parseInt(a.weight.metric.split(" ")[0]);
+  //       const weightB = parseInt(b.weight.metric.split(" ")[0]);
   
-        return order === "A" ? weightA - weightB : weightB - weightA;
-      });
+  //       return order === "A" ? weightA - weightB : weightB - weightA;
+  //     });
   
-      dispatch({ type: ORDER_BY_WEIGHT, payload: sortedDogs });
+  //     dispatch({ type: ORDER_BY_WEIGHT, payload: sortedDogs });
+  //   };
+  // };
+  export const orderWeightCards = (order) => {
+    return async function (dispatch){
+        try{
+            dispatch({type: ORDER_BY_WEIGHT, payload: order});
+        } catch (error){
+            console.log(error.message)
+        }
     };
-  };
+};
   
   export const postDogs = (dogCreate) => {
     const endpoint = `http://localhost:3001/dogs`;

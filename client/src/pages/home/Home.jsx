@@ -58,15 +58,9 @@ function Home() {
 
   const handleFilter = (event) => {
     event.preventDefault();
-    const selectedTemperament = event.target.value;
-    if (selectedTemperament === "") {
-      dispatch(getDogs()); // Mostrar todos los perros
-    } else {
-      dispatch(filterCards(selectedTemperament)); // Filtrar por temperamento
-    }
+    dispatch(filterCards(event.target.value));
     resetPag();
   };
-  
 
   const handleFilterByHosted = (event) => {
     event.preventDefault();
@@ -74,17 +68,21 @@ function Home() {
     resetPag();
   };
 
+  const handleFilterByTemperament = (event) => {
+    event.preventDefault();
+    dispatch(filterCards(event.target.value));
+    resetPag();
+  };
+
   const handleOrdername = (event) => {
     event.preventDefault();
     dispatch(ordernameCards(event.target.value));
   };
-  
+
   const handleOrderWeight = (event) => {
     event.preventDefault();
-    const order = event.target.value;
-    dispatch(orderWeightCards(order)); // Ordenar por peso
+    dispatch(orderWeightCards(event.target.value));
   };
-  
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {
@@ -113,6 +111,7 @@ function Home() {
         handleOrderWeight={handleOrderWeight}
         handleOrdername={handleOrdername}
         handleFilterByHosted={handleFilterByHosted}
+        handleFilterByTemperament={handleFilterByTemperament}
         temperaments={temperaments}
         handleFilter={handleFilter}
       />

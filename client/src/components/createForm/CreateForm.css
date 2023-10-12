@@ -1,0 +1,37 @@
+
+.form-dog-container {
+  color: rgb(243, 238, 238);
+  box-sizing: border-box;
+}
+
+.form-dog-container label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.form-dog-container input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.form-dog-container button {
+  width: 100%;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.dog-image img {
+  max-width: 200px;
+}
+
+
+.form-dog-container fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}

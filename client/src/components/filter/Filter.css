@@ -1,0 +1,16 @@
+.filter-container select {
+    color: white;
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1em;
+    font-weight: 500;
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: rgba(157, 78, 4, 0.705);
+    border: none;
+    margin: 1px;
+  }
+  
+  .filter-container select:hover {
+    background-color: #a92d2d;
+  }

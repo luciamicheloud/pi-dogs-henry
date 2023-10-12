@@ -1,3 +1,5 @@
+import "./SearchBar.css";
+
 function SearchBar({ handleSubmit, handleChange, handleAll, input }) {
     return (
       <div className="search-container">

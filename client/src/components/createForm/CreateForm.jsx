@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { postDogs } from "../../redux/actions/actions";
 import validate from "./validation";
 import CheckBox from "../../components/checkBox/CheckBox";
+import "./CreateForm.css"
 
 
 function CreateDogForm({ props }) {
