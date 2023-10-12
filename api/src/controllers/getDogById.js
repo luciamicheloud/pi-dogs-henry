@@ -3,46 +3,50 @@ const { Dog, Temperament } = require("../db");
 const axios = require("axios");
 const { API_KEY } = process.env;
 
-const URL = "https://api.thedogapi.com/v1/breeds"
-
 const getDogById = async (req, res) => {
   try {
     const { id } = req.params;
-    const source = isNaN(id) ? "bdd" : "api"
-
-    const dog = source === "api"
-      ? await axios.get(`${URL}/${id}?api_key=${API_KEY}`)
-      : await Dog.findByPk( id,{include:{model:Temperament,as : "temperaments"}})
-
-      
+    const source = isNaN(id) ? "bdd" : "api";
 
     if (source === "api") {
-      const dogApi = [dog.data] // lo pongo en una array para poder mapearlo
+      // Traer datos de la API
+      const URL = `https://api.thedogapi.com/v1/breeds/${id}?api_key=${API_KEY}`;
+      const response = await axios.get(URL);
+      const dogApi = response.data;
 
+      const dogResponse = {
+        id: dogApi.id,
+        name: dogApi.name,
+        image: `https://cdn2.thedogapi.com/images/${dogApi.reference_image_id}.jpg`,
+        height: dogApi.height.metric,
+        weight: dogApi.weight.metric,
+        life_span: dogApi.life_span,
+        temperaments: dogApi.temperament.split(', ').map(temp => ({ name: temp }))
+      };
 
-      const filtereddogApi = dogApi.map((perro) => ({
-        id: perro.id,
-        name: perro.name,
-        height: perro.height.metric,
-        image: `https://cdn2.thedogapi.com/images/`+perro.reference_image_id+`.jpg`,
-        weight: perro.weight.metric,
-        temperaments: perro.temperament,
-        life_span: perro.life_span
-      }));
-
-      
-
-      res.json(filtereddogApi)
+      res.json([dogResponse]);
     } else {
-      // traerme los temperaments
-      res.json(dog)
+      // Traer datos de la base de datos local
+      const dog = await Dog.findByPk(id, {
+        include: [{ model: Temperament, as: "temperaments" }],
+      });
+
+      const dogResponse = {
+        id: dog.id,
+        name: dog.name,
+        image: dog.image,
+        height: dog.height,
+        weight: dog.weight,
+        life_span: dog.life_span,
+        temperaments: dog.temperaments.map(temp => ({ name: temp.name }))
+      };
+
+      res.json([dogResponse]);
     }
-
   } catch (error) {
-    console.log(error)
-    res.status(400).json("error al obtener detalle de la raza")
+    console.log(error);
+    res.status(400).json("error al obtener detalle de la raza");
   }
-}
-
+};
 
 module.exports = getDogById;

@@ -125,12 +125,17 @@ import {
   };
   
   export const orderWeightCards = (order) => {
-    return async (dispatch) => {
-      try {
-        return dispatch({ type: ORDER_BY_WEIGHT, payload: order });
-      } catch (error) {
-        console.log("error:", error.message);
-      }
+    return async (dispatch, getState) => {
+      const allDogs = getState().allDogs.slice();
+      
+      const sortedDogs = allDogs.sort((a, b) => {
+        const weightA = parseInt(a.weight.metric.split(" ")[0]);
+        const weightB = parseInt(b.weight.metric.split(" ")[0]);
+  
+        return order === "A" ? weightA - weightB : weightB - weightA;
+      });
+  
+      dispatch({ type: ORDER_BY_WEIGHT, payload: sortedDogs });
     };
   };
   

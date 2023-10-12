@@ -58,9 +58,15 @@ function Home() {
 
   const handleFilter = (event) => {
     event.preventDefault();
-    dispatch(filterCards(event.target.value));
+    const selectedTemperament = event.target.value;
+    if (selectedTemperament === "") {
+      dispatch(getDogs()); // Mostrar todos los perros
+    } else {
+      dispatch(filterCards(selectedTemperament)); // Filtrar por temperamento
+    }
     resetPag();
   };
+  
 
   const handleFilterByHosted = (event) => {
     event.preventDefault();
@@ -72,11 +78,13 @@ function Home() {
     event.preventDefault();
     dispatch(ordernameCards(event.target.value));
   };
-
+  
   const handleOrderWeight = (event) => {
     event.preventDefault();
-    dispatch(orderWeightCards(event.target.value));
+    const order = event.target.value;
+    dispatch(orderWeightCards(order)); // Ordenar por peso
   };
+  
 
   const handlePreviousPage = () => {
     if (currentPage > 1) {

@@ -26,7 +26,7 @@ function Detail() {
         <p>ID: {dog[0].id}</p>
         <p>height: {dog[0].height} cm.</p>
         <p>weight: {dog[0].weight} kg.</p>
-        <p>temperaments: {dog[0].temperaments}</p>
+        <p>temperaments: {dog[0].temperaments.map((temp)=> temp.name).join(", ")}</p>
         <p>Años de vida: {dog[0].life_span}</p>
       </div>
       <Link to="/home">Volver al inicio</Link>

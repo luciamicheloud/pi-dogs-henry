@@ -26,7 +26,7 @@ const getDogByname = async (req, res) => {
       image: e.image.url,
       height: e.height.metric,
       weight: e.weight.metric,
-      temperaments: e.temperament,
+      temperaments: [e.temperament],
       life_span: e.life_span
     }));
 
