@@ -18,10 +18,10 @@ function Create() {
     <div className="create-container">
       <Navbar />
       <h1>Create your breed</h1>
-      <CreateDogForm props={temperaments} />
       <button>
-        <Link to="/home">Home</Link>
+        <Link to="/home">{"<<Back"}</Link>
       </button>
+      <CreateDogForm props={temperaments} />
     </div>
   );
 }

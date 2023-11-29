@@ -1,7 +1,12 @@
 .create-container {
     flex-direction: row;
-    justify-content: center;
     background-size: cover;
     align-items: center;
     align-content: center;
+    min-width: 100vh;
+    min-height: 100vh;
+  }
+
+  .create-container button{
+    margin-right: 100%;
   }

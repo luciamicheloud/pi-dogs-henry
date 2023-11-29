@@ -1,37 +1,47 @@
+/* ./CreateForm.css */
 
 .form-dog-container {
-  color: rgb(243, 238, 238);
-  box-sizing: border-box;
-}
-
-.form-dog-container label {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.form-dog-container input {
-  width: 100%;
-  padding: 5px;
+  max-width: 60vh;
+  margin: auto;
+  padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 5px;
+  background-color:  rgba(157, 78, 4, 0.705);
 }
 
-.form-dog-container button {
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input {
   width: 100%;
-  padding: 5px 10px;
+  padding: 8px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border-radius: 1vh;
+}
+
+span {
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+  display: block;
+}
+
+button {
+  background-color: #4caf50;
   color: white;
+  padding: 10px 15px;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   cursor: pointer;
+  width: 20vh;
+  margin-left: 20vh;
+  margin-right: 20vh;
 }
 
-.dog-image img {
-  max-width: 200px;
-}
-
-
-.form-dog-container fieldset {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5px;
+button:hover {
+  background-color: #45a049;
 }

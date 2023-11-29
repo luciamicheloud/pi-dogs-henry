@@ -11,7 +11,13 @@ function CreateDogForm({ props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const temperaments = props;
-  const [checkBox, setCheckBox] = useState([]);
+  //const [checkBox, setCheckBox] = useState([]);
+  const handleFilterByTemperament = (event) => {
+    event.preventDefault();
+    dispatch(filterCards(event.target.value));
+    resetPag();
+  };
+
 
   const [dogData, setDogData] = useState({
     name: "",
@@ -81,8 +87,8 @@ function CreateDogForm({ props }) {
   };
 
   return (
-    <div className="form-dog-container">
-      <form onSubmit={handleSubmit}>
+    <div >
+      <form className="form-dog-container" onSubmit={handleSubmit}>
         <label>
           Name:
           <input
@@ -151,15 +157,16 @@ function CreateDogForm({ props }) {
         <br />
         <label>
         <br />
-        <fieldset>
-          <legend>Here you have somes temperaments</legend>
-          <CheckBox props={temperaments} handleCheck={handleCheck} 
-            type="text"
-            name="temperaments"
-            value={dogData.temperaments}
-            onChange={handleInputChange}
-            />
-        </fieldset>
+        
+        <CheckBox
+         handleFilterByTemperament={handleFilterByTemperament}
+         temperaments={temperaments}
+         type="text"
+         name="temperaments"
+         value={dogData.temperaments}
+         onChange={handleInputChange}
+        />
+
         <br />
         <span>{errors.temperaments}</span>
             </label>
