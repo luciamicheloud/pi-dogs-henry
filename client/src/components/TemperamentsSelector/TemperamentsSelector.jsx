@@ -19,17 +19,14 @@ function TemperamentsSelector({ handleFilterByTemperament, temperaments }) {
         <label htmlFor="temperamentSelector">Select Temperaments:</label>
         <Options
           props={temperaments}
-          onChange={handleSelect}
-          value={selectedTemperaments}
-          multiple
         />
   
         {selectedTemperaments.length > 0 && (
           <div>
             <span>Selected Temperaments:</span>
             {selectedTemperaments.map((temp) => (
-              <div key={temp}>
-                <span>{temp}</span>
+              <div key={temp.name}>
+                <span>{temp.name}</span>
               </div>
             ))}
           </div>

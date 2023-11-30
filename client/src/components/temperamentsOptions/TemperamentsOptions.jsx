@@ -8,7 +8,7 @@ function Options({ props, handleFilter }) {
       </option>
 
       {props.map((temp) => (
-        <option value={temp.name} key={temp.name}>
+        <option value={temp.name} key={temp.id}>
           {temp.name}
         </option>
       ))}
