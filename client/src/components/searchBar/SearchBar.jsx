@@ -5,7 +5,7 @@ function SearchBar({ handleSubmit, handleChange, handleAll, input }) {
       <div className="search-container">
         <form>
           <input
-            placeholder="Search..."
+            placeholder="Search for a breed"
             width="25px"
             onChange={(e) => handleChange(e)}
             value={input}
