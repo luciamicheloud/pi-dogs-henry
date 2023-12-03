@@ -13,9 +13,9 @@
   }
   
   .search-container input {
-    height: 35px;
+    height: 3.5vh;
     border-radius: 5px;
-    width: 150px;
+    width: 25vh;
   
     align-items: center;
     justify-content: center;

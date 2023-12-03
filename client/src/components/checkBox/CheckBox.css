@@ -1,19 +1,52 @@
 .checkBox-container {
-    display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-gap: 3px;
-  }
-  
-  .checkBox-container div {
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: rgb(227, 133, 12);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 25px;
-  }
-  
-  .checkBox-container div:hover {
-    transform: scale(2);
-  }
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1vh;
+  width: 70vh;
+  height: 50vh;
+}
+
+div {
+  margin-right: 0.2vh;
+  margin-bottom: 0.5vh;
+}
+
+label {
+  margin-left: 0.5vw;
+  font-size: 2.5vh;
+}
+
+input {
+  size: 3vh;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination span{
+  font-size: 2.5vh;
+  color: #ffffff;
+  background-color: rgb(24, 24, 24);
+  padding: 1vh;
+  margin: 1vh;
+  border-radius: 1vh;
+  width: 9vh;
+  height: 4vh;
+}
+
+.pagination p{
+  color: #ffffff;
+  background-color: rgb(24, 24, 24);
+  padding: 1vh;
+  margin: 1vh;
+  border-radius: 1vh;
+  width: 4vh;
+  height: 4vh;
+}
+
+.pagination p:hover{
+  background-color: #fbfbfb;
+  color: black;
+}

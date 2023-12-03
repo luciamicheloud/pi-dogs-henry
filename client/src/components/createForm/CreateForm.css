@@ -1,37 +1,48 @@
-
 .form-dog-container {
-  color: rgb(243, 238, 238);
-  box-sizing: border-box;
-}
-
-.form-dog-container label {
-  font-weight: bold;
-  margin-right: 5px;
-}
-
-.form-dog-container input {
-  width: 100%;
-  padding: 5px;
+  width: 60%;
+  min-width: 75vh;
+  margin: 5vh auto;
+  padding: 2vh;
   border: 1px solid #ccc;
-  border-radius: 3px;
+  border-radius: 8px;
+  background-color: rgba(157, 78, 4, 0.705);
 }
 
-.form-dog-container button {
-  width: 100%;
-  padding: 5px 10px;
+form {
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 1vh;
+}
+
+input {
+  width: 90%;
+  padding: 1vh;
+  margin-top: 0.5vh;
+  margin-bottom: 1vh; /* Reduce margin-bottom to provide space between input and error message */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Style span (error message) */
+span {
+  color: rgb(79, 1, 1); /* Change color to dark red */
+  font-size: 2vh;
+  display: block; /* Ensure each error message appears on a new line */
+  margin-bottom: 1vh;
+}
+
+button {
+  background-color: #4caf50;
   color: white;
+  padding: 1vh;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
+  margin-top: 2vh;
 }
 
-.dog-image img {
-  max-width: 200px;
-}
-
-
-.form-dog-container fieldset {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 5px;
+button:hover {
+  background-color: #45a049;
 }

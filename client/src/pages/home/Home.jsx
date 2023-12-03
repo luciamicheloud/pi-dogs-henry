@@ -19,16 +19,36 @@ import Pagination from "../../components/pagination/Pagination";
 
 function Home() {
   const dispatch = useDispatch();
+
+  //paginado
   const allDogs = useSelector((state) => state.allDogs);
-  const temperaments = useSelector((state) => state.temperaments);
-
-  const [input, setInput] = useState("");
-
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
+  const itemsPerPage = 9;
+  const totalPages = Math.ceil(allDogs.length / itemsPerPage);
+  
+  //filtros
+  const temperaments = useSelector((state) => state.temperaments);
+  const [input, setInput] = useState("");
+  
+  
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = allDogs.slice(indexOfFirstItem, indexOfLastItem);
+  
+  //paginado
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    const totalPages = Math.ceil(allDogs.length / itemsPerPage);
+    if (currentPage < totalPages) {
+      setCurrentPage((prevStatus) => prevStatus + 1);
+    }
+  };
+
 
   useEffect(() => {
     dispatch(getDogs());
@@ -84,18 +104,6 @@ function Home() {
     dispatch(orderWeightCards(event.target.value));
   };
 
-  const handlePreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handleNextPage = () => {
-    const totalPages = Math.ceil(allDogs.length / itemsPerPage);
-    if (currentPage < totalPages) {
-      setCurrentPage((prevStatus) => prevStatus + 1);
-    }
-  };
 
   return (
     <div className="body-container">
@@ -106,7 +114,6 @@ function Home() {
         handleAll={handleAll}
         input={input}
       />
-      <h1>Dogs gallery</h1>
       <Filter
         handleOrderWeight={handleOrderWeight}
         handleOrdername={handleOrdername}
@@ -122,6 +129,7 @@ function Home() {
         currentPage={currentPage}
         allDogs={allDogs}
         itemsPerPage={itemsPerPage}
+        totalPages={totalPages}
       />
     </div>
   );

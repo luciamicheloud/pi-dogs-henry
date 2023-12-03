@@ -19,9 +19,6 @@ function Create() {
       <Navbar />
       <h1>Create your breed</h1>
       <CreateDogForm props={temperaments} />
-      <button>
-        <Link to="/home">Home</Link>
-      </button>
     </div>
   );
 }

@@ -47,11 +47,11 @@ function CreateDogForm({ props }) {
     };
 
     if (Object.keys(errors).length) {
-      return alert("No se puede crear personaje, faltan datos");
+      return alert("Can't create character, data missing");
     }
 
     dispatch(postDogs(dogCreated));
-    alert("Your dog has been Created!!");
+    alert("your breed was added correctly");
     setDogData({
       name: "",
       heightMax: "",
@@ -152,7 +152,7 @@ function CreateDogForm({ props }) {
         <label>
         <br />
         <fieldset>
-          <legend>Here you have somes temperaments</legend>
+          <legend>Temperaments</legend>
           <CheckBox props={temperaments} handleCheck={handleCheck} 
             type="text"
             name="temperaments"

@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import logoDoggies from "../../assets/logoDoggies.png";
 import "./navBar.css";
 
 
@@ -9,7 +8,7 @@ function Navbar() {
       <ul>
         <li>
           <NavLink to="/">
-            <img className="logo" alt="dog-head" src={logoDoggies} />
+            <h2>Log out</h2>
           </NavLink>
         </li>
         <li>
