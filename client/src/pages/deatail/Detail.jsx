@@ -1,3 +1,4 @@
+import NavBar from "../../components/navBar/NavBar"
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -20,16 +21,27 @@ function Detail() {
 
   return (
     <div>
-      <h1 className="card-container-font-title">{dog[0].name}</h1>
+      <NavBar/>
       <div className="card-container">
+
+        <h1>{dog[0].name}</h1>
+        
+        <div className="data-container">
         <img src={dog[0].image} alt={dog[0].name} />
+        
+        <div className="text-container">
         <p>ID: {dog[0].id}</p>
-        <p>height: {dog[0].height} cm.</p>
-        <p>weight: {dog[0].weight} kg.</p>
-        <p>temperaments: {dog[0].temperaments.map((temp)=> temp.name).join(", ")}</p>
+        <p>Height: {dog[0].height} cm.</p>
+        <p>Weight: {dog[0].weight} kg.</p>
+        <p>Temperaments: {dog[0].temperaments.map((temp)=> temp.name).join(", ")}</p>
         <p>Años de vida: {dog[0].life_span}</p>
+        </div>
+        </div>
+
       </div>
+
       <Link to="/home">Volver al inicio</Link>
+
     </div>
   );
 }

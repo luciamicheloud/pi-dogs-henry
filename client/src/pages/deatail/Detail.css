@@ -1,38 +1,54 @@
 .card-container {
-    margin-bottom: 25px;
-    display: flex;
-    flex-direction: column;
-    width: 400px;
-    height: 500px;
-    background-color: rgb(142, 40, 27);
-    border-radius: 20px;
-    padding: 30px;
-    backface-visibility: hidden;
-    transform: translateZ(0);
-    transition: transform 0.25s ease-out;
-    align-items: center;
-    font-size: 15px;
-  }
+  width: 90%;
+  margin: 5vh;
+  padding: 4vh;
+
   
-  .card-container:hover {
-    transform: scale(1.05);
+  background-color: rgba(157, 78, 4, 0.705);
+  border-radius: 20px;
+  backface-visibility: hidden;
+  font-size: 15px;
+}
+
+.data-container {
+  display: flex;
+}
+
+.text-container {
+  text-align: left;
+  margin-left: 2vh;
+  font-size: 3vh;
+}
+
+
+.card-container:hover {
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+  transform: scale(1.05);
+}
+
+.card-container img {
+  width: 100%; /* Hacer la imagen ocupar el 100% del contenedor */
+  height: auto; /* Mantener la proporción de la imagen */
+  border: 1px solid white;
+  border-radius: 20px;
+  transform: translateZ(0);
+  transition: transform 0.25s ease-out;
+}
+
+.card-container-font {
+  font-size: 15px;
+  color: rgb(28, 28, 28);
+}
+
+.card-container h1{
+  color: white;
+  font-size: 7vh; /* Ajustar el tamaño del título */
+}
+
+/* Media query para dispositivos con un ancho máximo de 768px (versión móvil) */
+@media only screen and (max-width: 768px) {
+  .card-container {
+    flex-direction: column; /* Cambiar a una disposición de columna */
   }
-  
-  .card-container img {
-    height: 200px;
-    border: 1px solid white;
-    border-radius: 20px;
-    transform: translateZ(0);
-    transition: transform 0.25s ease-out;
-    flex-wrap: wrap;
-  }
-  
-  .card-container-font {
-    font-size: 15px;
-    color: rgb(28, 28, 28);
-  }
-  
-  .card-container-font-title {
-    color: #000000;
-    font-size: 50px;
-  }
+}
