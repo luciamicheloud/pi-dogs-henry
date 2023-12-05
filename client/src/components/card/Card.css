@@ -37,3 +37,14 @@
 .card-container-c-body-font {
   font-family: "Poppins", sans-serif;
 }
+
+@media only screen and (max-width: 768px) {
+  .card-container-c {
+    width: 90%;
+  }
+
+  .card-container-c img {
+    height: auto;
+    max-width: 100%;
+  }
+}

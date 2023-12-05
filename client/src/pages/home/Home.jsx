@@ -15,7 +15,7 @@ import Cards from "../../components/cards/Cards";
 import Navbar from "../../components/navBar/NavBar";
 import SearchBar from "../../components/searchBar/SearchBar";
 import Pagination from "../../components/pagination/Pagination";
-
+import "./Home.css";
 
 function Home() {
   const dispatch = useDispatch();

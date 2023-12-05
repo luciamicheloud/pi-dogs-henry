@@ -40,7 +40,7 @@ function Detail() {
 
       </div>
 
-      <Link to="/home">Volver al inicio</Link>
+      <Link to="/home">{"<- go back"}</Link>
 
     </div>
   );
