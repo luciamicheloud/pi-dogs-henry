@@ -1,6 +1,6 @@
 import React from 'react';
 import Option from "../../components/temperamentsOptions/TemperamentsOptions";
-import "./filter.css";
+import "./Filter.css";
 function Filter({
   handleOrderWeight,
   handleOrdername,
