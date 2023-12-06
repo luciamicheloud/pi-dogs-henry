@@ -29,6 +29,7 @@
 
 .card-container img {
   width: 80%; 
+  max-width: 50vw;
   height: auto; 
   border: 1px solid white;
   border-radius: 2VH;

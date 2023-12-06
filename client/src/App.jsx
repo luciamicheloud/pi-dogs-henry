@@ -5,6 +5,8 @@ import Landing from './pages/landing/Landing';
 import Home from './pages/home/Home';
 import Detail from "./pages/deatail/Detail";
 import Create from "./pages/create/Create";
+import axios from "axios";
+axios.defaults.baseURL = "http://localhost:3001";
 
 function App() {
   const [count, setCount] = useState(0)

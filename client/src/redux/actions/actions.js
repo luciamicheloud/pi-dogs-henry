@@ -13,7 +13,7 @@ import {
   import axios from "axios";
   
   export const getDogs = () => {
-    const endpoint = "http://localhost:3001/dogs";
+    const endpoint = "/dogs";
   
     return async (dispatch) => {
       try {
@@ -32,7 +32,7 @@ import {
   };
   
   export const getDogByname = (name) => {
-    const endpoint = `http://localhost:3001/dogs/name/?name=${name}`;
+    const endpoint = `/dogs/name/?name=${name}`;
   
     return async (dispatch) => {
       try {
@@ -51,7 +51,7 @@ import {
   };
   
   export const getDogById = (id) => {
-    const endpoint = `http://localhost:3001/dogs/${id}`;
+    const endpoint = `/dogs/${id}`;
   
     return async (dispatch) => {
       try {
@@ -71,7 +71,7 @@ import {
   };
   
   export const getTemperament = () => {
-    const endpoint = `http://localhost:3001/temperaments`;
+    const endpoint = `/temperaments`;
   
     return async (dispatch) => {
       try {
@@ -124,20 +124,7 @@ import {
     };
   };
   
-  // export const orderWeightCards = (order) => {
-  //   return async (dispatch, getState) => {
-  //     const allDogs = getState().allDogs.slice();
-      
-  //     const sortedDogs = allDogs.sort((a, b) => {
-  //       const weightA = parseInt(a.weight.metric.split(" ")[0]);
-  //       const weightB = parseInt(b.weight.metric.split(" ")[0]);
-  
-  //       return order === "A" ? weightA - weightB : weightB - weightA;
-  //     });
-  
-  //     dispatch({ type: ORDER_BY_WEIGHT, payload: sortedDogs });
-  //   };
-  // };
+
   export const orderWeightCards = (order) => {
     return async function (dispatch){
         try{
@@ -149,7 +136,7 @@ import {
 };
   
   export const postDogs = (dogCreate) => {
-    const endpoint = `http://localhost:3001/dogs`;
+    const endpoint = `/dogs`;
   
     const { name, height, weight, life_span, image, temperaments } = dogCreate;
   
