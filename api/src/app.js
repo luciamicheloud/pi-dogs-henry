@@ -17,7 +17,7 @@ server.use(morgan('dev'));
 
 // Middleware para habilitar CORS
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:5173'); // Cambia a la URL de tu aplicación frontend
+  res.header('Access-Control-Allow-Origin', 'https://pi-dogs-henry-livid.vercel.app/'); // Cambia a la URL de tu aplicación frontend
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
