@@ -34,7 +34,7 @@ function Detail() {
         <p>Height: {dog[0].height} cm.</p>
         <p>Weight: {dog[0].weight} kg.</p>
         <p>Temperaments: {dog[0].temperaments.map((temp)=> temp.name).join(", ")}</p>
-        <p>Años de vida: {dog[0].life_span}</p>
+        <p>Life span: {dog[0].life_span}</p>
         </div>
         </div>
 
