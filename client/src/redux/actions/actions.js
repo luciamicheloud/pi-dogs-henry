@@ -128,12 +128,13 @@ import {
   export const orderWeightCards = (order) => {
     return async function (dispatch){
         try{
-            dispatch({type: ORDER_BY_WEIGHT, payload: order});
+            return dispatch({type: ORDER_BY_WEIGHT, payload: { order }});
         } catch (error){
             console.log(error.message)
         }
     };
 };
+
   
   export const postDogs = (dogCreate) => {
     const endpoint = `/dogs`;
