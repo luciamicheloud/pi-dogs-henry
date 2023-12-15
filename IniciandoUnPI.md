@@ -52,7 +52,7 @@
 #### 📌 Realizados estos pasos, en la línea de comandos debes posicionarte en la carpeta **`/api`**. Una vez allí, ya puedes ejecutar el comando **`npm start`**. Si el servidor está corriendo, deberías ver algo así:
 
 ```bash
-[nodemon] starting `node index.js` %s listening at 3001
+[nodemon] starting `node index.js` %s listening at PG_PORT
 ```
 
 <br />
