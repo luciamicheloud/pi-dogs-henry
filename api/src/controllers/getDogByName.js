@@ -6,7 +6,7 @@ const { API_KEY } = process.env;
 
 const URL = `https://api.thedogapi.com/v1/breeds/search?q=`;
 
-const getDogByname = async (req, res) => {
+const getDogByName = async (req, res) => {
   try {
     const { name } = req.query;
   

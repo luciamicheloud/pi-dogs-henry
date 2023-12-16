@@ -3,7 +3,7 @@ const getAllDogs = require('../controllers/getAllDogs');
 const getDogsById = require('../controllers/getDogById');
 const getTemperaments = require('../controllers/getTemperaments');
 const postDog = require('../controllers/postDog');
-const getDogByname = require('../controllers/getDogByname.js');
+const getDogByname = require('../controllers/getDogByName');
 
 const router = Router();
 
