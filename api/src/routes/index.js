@@ -13,10 +13,4 @@ router.get('/dogs/:id', getDogsById)
 router.post('/dogs', postDog)
 router.get('/temperaments', getTemperaments)
 
-
-
-
-
-
-
 module.exports = router;

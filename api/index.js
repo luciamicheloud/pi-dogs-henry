@@ -19,12 +19,12 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
-const PG_PORT = process.env.PORT || 3000; // Asegúrate de proporcionar un valor predeterminado si PORT no está definido
+const PORT = process.env.PORT || 3000; // Asegúrate de proporcionar un valor predeterminado si PORT no está definido
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  server.listen(PG_PORT, () => {
-    console.log(`Server listening at port ${PG_PORT}`); // eslint-disable-line no-console
+  server.listen(PORT, () => {
+    console.log(`Server listening at port ${PORT}`); // eslint-disable-line no-console
   });
 });
 
