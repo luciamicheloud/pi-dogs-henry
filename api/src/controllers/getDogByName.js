@@ -81,4 +81,4 @@ const getDogByName = async (req, res) => {
   }
 };
 
-module.exports = getDogByname;
+module.exports = getDogByName;

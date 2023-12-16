@@ -31,7 +31,7 @@ import {
     };
   };
   
-  export const getDogByname = (name) => {
+  export const getDogByName = (name) => {
     const endpoint = `/dogs/name/?name=${name}`;
   
     return async (dispatch) => {

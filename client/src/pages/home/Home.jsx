@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   getDogs,
-  getDogByname,
+  getDogByName,
   getTemperament,
   filterCards,
   ordernameCards,
@@ -66,7 +66,7 @@ function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(getDogByname(input));
+    dispatch(getDogByName(input));
     resetPag();
   };
 
