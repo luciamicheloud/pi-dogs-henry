@@ -43,6 +43,7 @@ const getDogById = async (req, res) => {
 
       res.json([dogResponse]);
     }
+    
   } catch (error) {
     console.log(error);
     res.status(400).json("error al obtener detalle de la raza");
